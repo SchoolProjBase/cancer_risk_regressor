@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, jsonify, make_response
 from pycaret.regression import load_model, predict_model
 import pandas as pd
 
-import logging
-logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# import logging
+# logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
 model = load_model('./model/Final CatBoost Regressor 101122')
@@ -45,7 +45,7 @@ def api():
             prediction = unit_prediction(new_obs_df)
             status_code = 200
         except Exception as e:
-            logging.error(e)
+            print(e)
             status_code = 400
     opt = {"Forecasted Risk": f"{prediction}"}
     return make_response(jsonify(opt), status_code)
