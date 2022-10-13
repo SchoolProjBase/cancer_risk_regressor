@@ -1,3 +1,4 @@
+from platform import platform
 from flask import Flask, render_template, request, jsonify, make_response
 from pycaret.regression import load_model, predict_model
 import pandas as pd
@@ -31,6 +32,10 @@ def process_ipt(ipts:str):
     for col in cate_cols:
         df[col] = df[col].astype("category")
     return df
+
+@app.route('/')
+def index():
+    return 'Hello World! This API is built using Flask for forecasting cancer risk.'
 
 @app.route("/api", methods=['POST'])
 def api():
