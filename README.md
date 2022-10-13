@@ -23,6 +23,6 @@ gunicorn -w 2 app:app -b localhost:8000
 
 ## Docker Build
 ```bash
-docker build --rm -t gender_classifier:v0 . #use buildx build --platform linux/amd64 for mac m1 in order to deploy to cloud
-docker run -d -p 8000:8080 gender_classifier:v0
+docker build --rm -t cancer_risk_regressor:v0 . #use buildx build --platform linux/amd64 for mac m1 in order to deploy to cloud
+docker run -d -p 8000:8080 cancer_risk_regressor:v0
 ```
